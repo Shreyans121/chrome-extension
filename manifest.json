@@ -1,21 +1,23 @@
 {
-  "name": "Chronus",
-  "description": "Time Tracker",
-  "version": "1",
+    "manifest_version": 2,
 
-  "permissions": [
-      "tabs",
-      "storage"
-  ],
+    "name": "Extension",
+    "description": "This extension aims at improving the productivity of the user",
+    "version": "1",
 
-  "background": {
-      "scripts": ["js/jquery.min.js"]
-  },
 
-  "chrome_url_overrides":{
-      "newtab" : "index.html"
-  },
+    "background": {
+        "scripts": ["js/background.js" , "js/jquery.min.js"]
+    },
 
-  "manifest_version": 2,
-  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+    "chrome_url_overrides":{
+        "newtab" : "index.html"
+    },
+
+    "permissions": [
+        "tabs",
+        "storage"
+    ],
+
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }

@@ -1,14 +1,33 @@
 <!doctype html>
 <html>
-  <head>
-    <meta content="charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Tab</title>
-    <link rel="stylesheet" href="css/style.css">
-  </head>
-  <body>
-    <div class="container"></div>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/script.js"></script>
-  </body>
+    <head>
+        <title>New Tab</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="font-awesome-4.1.0/css/font-awesome.css">
+        <link rel="stylesheet" href="css/vex.css" />
+        <link rel="stylesheet" href="css/vex-theme-top.css"/>
+    </head>
+    <body>
+        <i class="fa fa-ellipsis-v settings"></i>
+        <div class="settingsPanel from-left">
+            <div class="settingsContainer">
+                <div class="settingsHeader">SITES BEING TRACKED</div>
+                <input type="text" class="tracksiteInput" id = "firstSite">
+                <input type="text" class="tracksiteInput" id = "secondSite">
+                <input type="text" class="tracksiteInput" id = "thirdSite">
+                <input type="text" class="tracksiteInput" id = "fourthSite">
+                <input type="text" class="tracksiteInput" id = "fifthSite">
+                <div class="buttonsContainer"></div>
+            </div>  
+        </div>
+        <div class="container">
+            <div id = "actualTime"></div>
+            <h1 id ="websites"></h1>
+            <canvas id = "myChart"></canvas>
+        </div>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/background.js"></script>
+        <script src="js/vex.combined.min.js"></script>
+        <script src="js/Chart.js" ></script>
+    </body>
 </html>
