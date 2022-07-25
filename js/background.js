@@ -12,8 +12,6 @@ var websitesToTrack;
 
 var isFirstRun = false;
 
-var barWidth = 15;
-var barSpacing = 10;
 var timeQuotes = [
     "when you kill time, remember that it has no resurrection",
     "the trouble is, you think you have time",
@@ -184,9 +182,9 @@ function isWatchedWebsite(domainName){
     }
 }
 
-function getLastRefreshTime() {
-    return lastRefreshTimeStamp;
-}
+// function getLastRefreshTime() {
+//     return lastRefreshTimeStamp;
+// }
 
 function updateActiveTabUrl() {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) { 
@@ -214,9 +212,9 @@ function extractDomain(str) {
 }
 
 
-function getTimeOnFbTwitter(){
-    return totalTimeOnWebsites;
-}
+// function getTimeOnFbTwitter(){
+//     return totalTimeOnWebsites;
+// }
 
 function numDaysSinceUTC(){
     var NUM_MILI_IN_A_DAY = 86400000;
@@ -229,9 +227,9 @@ function isNewDay(){
     return (numDaysSinceUTC() - today >= 1);
 }
 
-function todayTimeData(){
-    return todayStorageName;
-}
+// function todayTimeData(){
+//     return todayStorageName;
+// }
 
 $(document).ready(function(){
 
