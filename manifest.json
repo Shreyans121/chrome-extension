@@ -7,8 +7,12 @@
 
 
     "background": {
-        "scripts": ["js/background.js" , "js/jquery.min.js"]
+        "scripts": ["js/background.js", "js/jquery.min.js" ]
     },
+
+    "icons": { "16": "images/img.png",
+           "48": "images/img.png",
+          "128": "images/img.png" },
 
     "chrome_url_overrides":{
         "newtab" : "index.html"

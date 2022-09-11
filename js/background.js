@@ -44,7 +44,7 @@ chrome.runtime.onInstalled.addListener(function(details){
         today = numDaysSinceUTC();
         todayStorageName = "timeData" + numDaysSinceUTC();
         totalTimeOnWebsites = 0;
-        websitesToTrack = ["twitter.com", "facebook.com", "plus.google.com"];
+        websitesToTrack = ["twitter.com", "facebook.com", "instagram.com"];
 
         data[todayStorageName] = totalTimeOnWebsites;
         data["today"] = numDaysSinceUTC();
@@ -72,7 +72,7 @@ function startUp() {
     });
     updateActiveTabUrl();
 
-    registerEvents(); 
+    registerEvents();
 
     isUserActive = true;
 
@@ -100,7 +100,7 @@ function updateData(){
     displayTime();
 }
 function displayTime() {
-    
+
         var totalTimeSpent = totalTimeOnWebsites;
         console.log(totalTimeSpent);
         var div = document.getElementById("actualTime");
@@ -111,7 +111,7 @@ function displayTime() {
         dataToBeWritten["today"] = numDaysSinceUTC();
         // console.log(dataToBeWritten);
         chrome.storage.local.set(dataToBeWritten, function(){});
-    
+
 }
 
 function getReadableTime(totalSeconds) {
@@ -119,7 +119,7 @@ function getReadableTime(totalSeconds) {
     var minutes = (Math.floor(totalSeconds/60))%60;
     var hours = (Math.floor(totalSeconds/3600));
     var readableTime = '';
-    if (hours > 1) 
+    if (hours > 1)
         readableTime += hours + ' hours ';
     else if(hours == 1)
         readableTime += hours + ' hour '
@@ -153,7 +153,7 @@ function registerEvents() {
         updateActiveTabUrl();
     });
     console.log("reg")
-    window.setInterval(intervalListener, 1000); 
+    window.setInterval(intervalListener, 1000);
 }
 
 function intervalListener() {
@@ -163,9 +163,9 @@ function intervalListener() {
 function updateTotalTime() {
     // console.log(totalTimeOnWebsites)
     var currDomain = getActiveWebsite();
-    console.log(isWatchedWebsite(currDomain))  
+    console.log(isWatchedWebsite(currDomain))
     if(isUserActiveNow() && isWatchedWebsite(currDomain)){
-        totalTimeOnWebsites += 1; 
+        totalTimeOnWebsites += 1;
     }
     updateData();
     // totalTimeOnWebsites += 1;
@@ -187,9 +187,9 @@ function isWatchedWebsite(domainName){
 // }
 
 function updateActiveTabUrl() {
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) { 
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
         console.log(tabs)
-        if (tabs.length < 1) { 
+        if (tabs.length < 1) {
             activeTabUrl = null;
         } else {
             activeTabUrl = tabs[0].url;
@@ -206,7 +206,7 @@ function extractDomain(str) {
         str = strList[0];
     }
     str = str.replace(/www\./g,'');
-    
+
     var domainName = str.split('\/')[0];
     return domainName;
 }
@@ -235,9 +235,9 @@ $(document).ready(function(){
 
     var backgroundPage = chrome.extension.getBackgroundPage();
     while(backgroundPage === null){
-      backgroundPage = chrome.extension.getBackgroundPage();  
+      backgroundPage = chrome.extension.getBackgroundPage();
     }
- 
+
     chrome.storage.local.get("sitesLocked", function(result){
         // result.sitesLocked = false;
         if(backgroundPage !== null && backgroundPage.isFirstRun) {
@@ -263,7 +263,7 @@ $(document).ready(function(){
         }
 
     });
-    
+
 
     if(chrome.extension.getBackgroundPage().isFirstRun){
         chrome.storage.local.get("trackData", function(result){
@@ -291,7 +291,7 @@ $(document).ready(function(){
     displayTime();
 
     setInterval(function(){
-         displayTime(); 
+         displayTime();
      }, 1000);
 
     $('.settings').on('click', function(event){
@@ -300,7 +300,7 @@ $(document).ready(function(){
 
 
     $('.settingsPanel').on('click', function(event){
-        if($(event.target).is('.done')) { 
+        if($(event.target).is('.done')) {
             $('.editBtn').remove();
             if(chrome.extension.getBackgroundPage().isFirstRun){
                 $('.settingsPanel').removeClass('is-visible');
@@ -336,7 +336,7 @@ $(document).ready(function(){
                 $('.buttonsContainer').append("<img src = \"images/button_LOCK.png\" class = \"lockBtn\"><img src = \"images/button_OK.png\" class = \"done\">");
             });
 
-        }        
+        }
 
         if($(event.target).is('.settingsPanel') && !chrome.extension.getBackgroundPage().isFirstRun) {
             // chrome.storage.local.set({"sitesLocked" : false}, function(){});
